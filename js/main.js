@@ -1,5 +1,7 @@
 const APP = {
     init: () => {
+        document.getElementById("date").innerText = new Date().toDateString();
+
         APP.registerSW();
     },
 
