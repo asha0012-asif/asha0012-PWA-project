@@ -1,0 +1,41 @@
+{
+    "name": "asha0012-pwa-project",
+    "short-name": "PWA Project",
+    "description": "This app lets you find movies",
+    "icons": [
+        {
+            "src": "./img/icons/",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "./img/icons/",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "./img/icons/",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "./img/icons/",
+            "sizes": "150x150",
+            "type": "image/png"
+        },
+        {
+            "src": "./img/icons/",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./img/icons/",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "orientation": "portrait-primary",
+    "theme-color" : "#000",
+    "background-color" : "#eee",
+    "start_url": "./index.html"
+}
