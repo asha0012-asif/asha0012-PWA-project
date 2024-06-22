@@ -1,0 +1,145 @@
+:root {
+    --color-primary-100: #98a8b8;
+    --color-primary-200: #57738b;
+    --color-primary-300: #0c4160;
+    --color-primary-400: #113045;
+    --color-primary-500: #101f2b;
+
+    --color-black: #000;
+    --color-white: #fff;
+
+    --grid-cols: 1;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+/* --- CONTAINERS --- */
+.container {
+    max-width: 65em;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.header .container {
+    padding: 1.5rem;
+}
+
+/* --- IMAGES --- */
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+.icon {
+    width: 2rem;
+}
+
+/* --- TYPOGRAPHY --- */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* --- FORM ELEMENTS --- */
+form {
+    display: grid;
+    gap: 0.5rem;
+}
+
+input,
+button {
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    /* common styles */
+    display: inline-block;
+    padding: 0.55em 1.5em 0.5em;
+    background-color: var(--color-primary-300);
+    border: 0.125rem solid var(--color-primary-300);
+    color: var(--color-white);
+    border-radius: 0.5em;
+
+    /* link necessary styles */
+    text-decoration: none;
+
+    /* button necessary styles */
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* --- LISTS --- */
+ul {
+    list-style-type: none;
+}
+
+/* --- HEADER --- */
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icons-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* --- RESULTS --- */
+.results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    @media only screen and (min-width: 45rem) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media only screen and (min-width: 65rem) {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+.card {
+    display: grid;
+    cursor: pointer;
+
+    img {
+        border-radius: 0.5rem;
+    }
+
+    .btn {
+        background-color: #0000;
+        border-color: #0000;
+
+        padding: 0;
+    }
+}

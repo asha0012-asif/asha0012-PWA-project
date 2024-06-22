@@ -1,7 +1,5 @@
 const APP = {
     init: () => {
-        document.getElementById("date").innerText = new Date().toDateString();
-
         APP.registerSW();
     },
 
@@ -10,6 +8,6 @@ const APP = {
             navigator.serviceWorker.register("./sw.js");
         }
     },
-}
+};
 
 window.addEventListener("DOMContentLoaded", APP.init);

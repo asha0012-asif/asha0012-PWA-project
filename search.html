@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Search | FilmQuest Movie App</title>
+
+        <link rel="stylesheet" href="./css/css-reset.css" />
+        <link rel="stylesheet" href="./css/main.css" />
+        <link rel="stylesheet" href="./css/search.css" />
+    </head>
+
+    <body id="search">
+        <header class="header">
+            <div class="container">
+                <a href="./index.html">
+                    <div class="icon" id="close-icon">
+                        <img
+                            class="ion-close"
+                            src="./img/icons/ion_close.svg"
+                        />
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <section class="section__search-form">
+                <div class="container">
+                    <h1 class="header__title">Search for a movie</h1>
+
+                    <form action="" method="get" class="search-form">
+                        <input
+                            type="text"
+                            class="search-form__input"
+                            placeholder="Search for a movie"
+                        />
+                        <button class="btn search-form__btn">Search</button>
+                    </form>
+
+                    <div class="filters">
+                        <button class="btn filter-btn" id="release-date">
+                            Release Date
+                        </button>
+                        <button class="btn filter-btn" id="popularity">
+                            Popularity
+                        </button>
+                        <button class="btn filter-btn" id="vote">Vote</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results-preview"></section>
+        </main>
+
+        <script src="./js/main.js"></script>
+    </body>
+</html>

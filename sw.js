@@ -13,7 +13,7 @@ const preCacheResources = [
     "./css/main.css",
     "./css/css-reset.css",
     "./js/main.js",
-    "./img/icons/"
+    "./img/icons/",
 ];
 
 self.isOnline = "onLine" in navigator?.onLine;
@@ -21,11 +21,12 @@ self.isOnline = "onLine" in navigator?.onLine;
 self.addEventListener("install", (ev) => {
     console.log("SW install event");
     ev.waitUntil(
-        caches.open(cacheName)
-        .then((cache) => {
-            return cache.addAll(preCacheResources);
-        })
-        .catch(console.error)
+        caches
+            .open(cacheName)
+            .then((cache) => {
+                return cache.addAll(preCacheResources);
+            })
+            .catch(console.error)
     );
 });
 
@@ -39,12 +40,11 @@ self.addEventListener("activate", (ev) => {
                 Promise.all(
                     keys
                         .filter(
-                            (key) =>
-                                key !== cacheName && key !== movieCacheName,
+                            (key) => key !== cacheName && key !== movieCacheName
                         )
-                        .map((key) => caches.delete(key)),
-                ),
-            ),
+                        .map((key) => caches.delete(key))
+                )
+            )
     );
 });
 

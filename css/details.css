@@ -1,0 +1,39 @@
+.icons-group__details {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 3rem;
+}
+
+.basic-details {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+}
+
+.basic-details__poster {
+    width: 100%;
+    max-width: 20rem;
+
+    img {
+        border-radius: 0.5rem;
+    }
+}
+
+.basic-details__info {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.basic-details__genres {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.basic-details__genre {
+    border: 0.0125rem solid var(--color-primary-300);
+    border-radius: 0.5rem;
+
+    padding: 0.25rem 0.5rem;
+}
