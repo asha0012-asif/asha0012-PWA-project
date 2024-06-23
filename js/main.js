@@ -1,12 +1,5 @@
-// 1 - add search functionality
-// 2 - add filter functionality
-// 3 - add movie details page
-// 4 - add favourite functionality
-// 5 - add cache functionality
-// 6 - add favourites page
-// 7 - add 404 page
-// 8 - add service worker
-// 9 - add offline functionality
+// 1 - add service worker
+// 2 - add offline functionality
 
 const APP = {
     BASE_URL: "https://asha0012-midterm-project-api.onrender.com/api/movies",
@@ -81,7 +74,12 @@ const APP = {
             cacheResults.addEventListener("click", APP.handleMovieClick);
         } else if (route === "/favourites.html") {
             console.log("Favourites page");
+
             APP.displayFavouriteMovies();
+
+            const favouriteResults =
+                document.getElementById("favourite-results");
+            favouriteResults.addEventListener("click", APP.handleMovieClick);
         } else if (route === "/404.html") {
             console.log("404 page");
         } else {
