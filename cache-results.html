@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cache results</title>
+        <title>Cache Results | FilmQuest Movie App</title>
 
         <link rel="stylesheet" href="./css/css-reset.css" />
         <link rel="stylesheet" href="./css/main.css" />
@@ -41,54 +41,10 @@
 
         <main>
             <div class="container">
-                <h2>Saved Results for "<span id="cache-value"></span>"</h2>
-                <ul id="cache-results" class="results">
-                    <li class="card">
-                        <img
-                            src="https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg"
-                            alt="Movie poster"
-                        />
-                        <h3>Godzilla vs. Kong</h3>
-                        <button class="btn">
-                            <div class="icon">
-                                <img
-                                    src="./img/icons/ion_heart.svg"
-                                    alt="favourite-icon"
-                                />
-                            </div>
-                        </button>
-                    </li>
-                    <li class="card">
-                        <img
-                            src="https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg"
-                            alt="Movie poster"
-                        />
-                        <h3>Godzilla vs. Kong</h3>
-                        <button class="btn">
-                            <div class="icon">
-                                <img
-                                    src="./img/icons/ion_heart.svg"
-                                    alt="favourite-icon"
-                                />
-                            </div>
-                        </button>
-                    </li>
-                    <li class="card">
-                        <img
-                            src="https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg"
-                            alt="Movie poster"
-                        />
-                        <h3>Godzilla vs. Kong</h3>
-                        <button class="btn">
-                            <div class="icon">
-                                <img
-                                    src="./img/icons/ion_heart.svg"
-                                    alt="favourite-icon"
-                                />
-                            </div>
-                        </button>
-                    </li>
-                </ul>
+                <h2 id="cache-h2">
+                    Saved Results for "<span id="cache-value"></span>"
+                </h2>
+                <ul id="cache-results" class="results"></ul>
             </div>
         </main>
 
@@ -97,5 +53,7 @@
                 <p>&copy; 2024 FILMQUEST INC.</p>
             </div>
         </footer>
+
+        <script src="./js/main.js"></script>
     </body>
 </html>

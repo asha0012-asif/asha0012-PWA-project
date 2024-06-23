@@ -31,22 +31,31 @@
 
                     <form action="" method="get" class="search-form">
                         <input
-                            type="text"
-                            class="search-form__input"
+                            type="search"
+                            id="search-form__input"
                             placeholder="Search for a movie"
                         />
                         <button class="btn search-form__btn">Search</button>
-                    </form>
 
-                    <div class="filters">
-                        <button class="btn filter-btn" id="release-date">
-                            Release Date
-                        </button>
-                        <button class="btn filter-btn" id="popularity">
-                            Popularity
-                        </button>
-                        <button class="btn filter-btn" id="vote">Vote</button>
-                    </div>
+                        <select name="filters" id="filters">
+                            <option value="">--- Filter by ---</option>
+                            <option value="release-date">Release Date</option>
+                            <option value="popularity">Popularity</option>
+                            <option value="vote">Vote</option>
+                        </select>
+
+                        <!-- <div class="filters">
+                            <button class="btn filter-btn" id="release-date">
+                                Release Date
+                            </button>
+                            <button class="btn filter-btn" id="popularity">
+                                Popularity
+                            </button>
+                            <button class="btn filter-btn" id="vote">
+                                Vote
+                            </button>
+                        </div> -->
+                    </form>
                 </div>
             </section>
 
