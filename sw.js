@@ -57,36 +57,58 @@ self.addEventListener("activate", (ev) => {
 });
 
 self.addEventListener("fetch", (ev) => {
-    // const reqURL = new URL(ev.request.url);
-    // console.log(`Fetching ${reqURL.pathname}`);
-    // handle requests for movie details
-    // if (reqURL.pathname.includes("")) {
-    //     ev.respondWith(
-    //         (async () => {
-    //             try {
-    //                 const cache = await caches.open(movieCacheName);
-    //                 const cachedResponse = await cache.match(ev.request);
-    //                 if (cachedResponse) {
-    //                     console.log("Serving from cache", reqURL.pathname);
-    //                     return cachedResponse;
-    //                 }
-    //                 const response = await fetch(ev.request);
-    //                 cache.put(ev.request, response.clone());
-    //                 return response;
-    //             } catch (err) {
-    //                 console.error(err);
-    //             }
-    //         })()
-    //     );
-    // }
-});
+    const req = new Request(ev.request);
+    console.log(req);
 
-// self.addEventListener("fetch", (ev) => {
-// console.log(ev.request);
-// const reqURL = new URL(ev.request.url);
-// console.log(`Fetching ${reqURL.pathname}`);
-// handle requests for movie details
-// });
+    // console.log(req.url.pathname);
+
+    // 1 - REPLACE SEARCH-RESULTS WITH CACHE-RESULTS (FETCH EV FOR PAGE GETS REPLACED)
+    // if (req.url) {
+
+    // }
+
+    // 2 - SAVE ALL IMAGES ON SEARCH-RESULTS PAGE TO cacheName
+    if (req.url.includes("image.tmdb") && req.url.includes("/t/p/w92")) {
+        ev.respondWith(
+            (async () => {
+                const cacheResponse = await caches.match(req);
+
+                if (cacheResponse) {
+                    console.log(`Cache hit for ${req.url}`);
+                    return cacheResponse;
+                }
+
+                const networkResponse = await fetch(req);
+
+                const cache = await caches.open(cacheName);
+                cache.put(req, networkResponse.clone());
+
+                return networkResponse;
+            })()
+        );
+    }
+
+    // 3 - if fetch is from render, then save details to movieCacheName
+    if (req.url.includes("/movies/")) {
+        ev.respondWith(
+            (async () => {
+                const cacheResponse = await caches.match(req);
+
+                if (cacheResponse) {
+                    console.log(`Cache hit for ${req.url}`);
+                    return cacheResponse;
+                }
+
+                const networkResponse = await fetch(req);
+
+                const cache = await caches.open(movieCacheName);
+                cache.put(req, networkResponse.clone());
+
+                return networkResponse;
+            })()
+        );
+    }
+});
 
 self.addEventListener("online", (ev) => {
     console.log("SW is online");

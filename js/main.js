@@ -43,7 +43,7 @@ const APP = {
             const keyword = searchParams.get("keyword");
             const sort = searchParams.get("sort");
 
-            APP.fetchMovie(keyword, sort);
+            APP.fetchMovies(keyword, sort);
 
             const searchResults = document.getElementById("search-results");
             searchResults.addEventListener("click", APP.handleMovieClick);
@@ -114,7 +114,7 @@ const APP = {
         });
     },
 
-    fetchMovie: async (keyword, sort) => {
+    fetchMovies: async (keyword, sort) => {
         console.log("\nFetching Movie Data");
 
         try {
@@ -131,11 +131,18 @@ const APP = {
             const { data } = await response.json();
             console.log(data);
 
-            // if no data is returned, go to 404 page (IDK HOW TO DO THIS)
+            // if no data is returned, go to 404 page
             if (data.length === 0) {
                 location.assign("./404.html");
                 return;
             }
+
+            // if (!navigator.onLine) {
+            //     console.log("Offline mode");
+            //     location.assign(
+            //         `./cache-results.html?keyword=${keyword}&sort=${sort}`
+            //     );
+            // }
 
             const searchResults = document.getElementById("search-results");
             APP.displayMovies(searchResults, data);
@@ -154,7 +161,7 @@ const APP = {
 
             movieCard.innerHTML = `
                 <img src="${imageUrl}" alt="${title} poster" />
-                <h2>${title}</h2>
+                <p>${title}</p>
                 <div class="icon">
                     <img
                         src="../img/icons/ion_heart.svg"
@@ -187,35 +194,7 @@ const APP = {
         // save this data to cache for offline use
         console.log(data);
 
-        APP.cacheMovieDetails(data, APP.movieCacheName);
         APP.displayMovieDetails(data);
-    },
-
-    cacheMovieDetails: async (movie, cacheName) => {
-        console.log("CACHING MOVIE DETAILS");
-        const cache = await caches.open(cacheName);
-        const movieMatch = await cache.match(movie.id);
-
-        if (movieMatch) {
-            console.log("Movie already in favourites");
-            return;
-        }
-
-        const movieFile = new File([JSON.stringify(movie)], movie.id, {
-            type: "application/json",
-        });
-
-        const movieResponse = new Response(movieFile, {
-            status: 200,
-            statusText: "Ok",
-            url: movieFile.url,
-            headers: {
-                "Content-Type": movieFile.type,
-                "Content-Length": movieFile.size,
-            },
-        });
-
-        await cache.put(movie.id, movieResponse);
     },
 
     displayMovieDetails: ({
@@ -260,8 +239,17 @@ const APP = {
 
         const response = await fetch(`${APP.BASE_URL}/${movieID}`);
         const { data } = await response.json();
+        console.log("Favourites data", data);
 
-        APP.cacheMovieDetails(data, APP.favouritesCacheName);
+        const cache = await caches.open(APP.favouritesCacheName);
+        await cache.put(
+            data.id,
+            new Response(JSON.stringify(data), {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+        );
     },
 
     displayFavouriteMovies: async () => {

@@ -44,21 +44,25 @@ img {
 
 /* --- TYPOGRAPHY --- */
 h1 {
+    font-family: "Abril Fatface", serif;
     font-size: 2rem;
     margin-bottom: 1rem;
 }
 
 h2 {
+    font-family: "Abril Fatface", serif;
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
 h3 {
+    font-family: "Abril Fatface", serif;
     font-size: 1.25rem;
     margin-bottom: 1rem;
 }
 
 p {
+    font-family: "Hind Madurai", sans-serif;
     margin-bottom: 1rem;
 }
 
