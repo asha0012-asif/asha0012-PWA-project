@@ -1,5 +1,7 @@
-// 1 - add service worker
-// 2 - add offline functionality
+// 1 - modify manifest.json to include company icon (make icon)
+// 2 - add hamburger nav menu to move between pages (home & favourites)
+// 3 - get home page working
+// 4 - add css to everything
 
 const APP = {
     BASE_URL: "https://asha0012-midterm-project-api.onrender.com/api/movies",
@@ -45,6 +47,13 @@ const APP = {
 
             APP.fetchMovies(keyword, sort);
 
+            if (!navigator.onLine) {
+                const cacheResults = document.getElementById("cache-results");
+                cacheResults.addEventListener("click", APP.handleMovieClick);
+
+                return;
+            }
+
             const searchResults = document.getElementById("search-results");
             searchResults.addEventListener("click", APP.handleMovieClick);
         } else if (route.includes("/details")) {
@@ -60,18 +69,6 @@ const APP = {
                 // save this movie to favourites
                 APP.fetchFavouriteMovie(movieID);
             });
-        } else if (route === "/cache-results.html") {
-            console.log("Cache Results page");
-
-            const searchParams = new URLSearchParams(location.search);
-
-            const keyword = searchParams.get("keyword");
-            const sort = searchParams.get("sort");
-
-            APP.displayCachedMovies(keyword, sort);
-
-            const cacheResults = document.getElementById("cache-results");
-            cacheResults.addEventListener("click", APP.handleMovieClick);
         } else if (route === "/favourites.html") {
             console.log("Favourites page");
 
@@ -118,34 +115,40 @@ const APP = {
         console.log("\nFetching Movie Data");
 
         try {
-            const searchValue = document.getElementById("search-value");
-            searchValue.textContent = keyword;
+            console.log("keyword", keyword);
+            console.log("sort", sort);
 
-            const url = new URL(
-                `${APP.BASE_URL}?keyword=${keyword}&sort=${sort}`
-            );
+            if (!navigator.onLine) {
+                console.log("Offline mode");
 
-            const response = await fetch(url);
-            console.log("Response", response);
+                const cacheValue = document.getElementById("cache-value");
+                cacheValue.textContent = keyword;
 
-            const { data } = await response.json();
-            console.log(data);
-
-            // if no data is returned, go to 404 page
-            if (data.length === 0) {
-                location.assign("./404.html");
+                APP.displayCachedMovies(keyword, sort);
                 return;
+            } else {
+                const url = new URL(
+                    `${APP.BASE_URL}?keyword=${keyword}&sort=${sort}`
+                );
+
+                const response = await fetch(url);
+                console.log("Response", response);
+
+                const { data } = await response.json();
+                console.log(data);
+
+                // if no data is returned, go to 404 page
+                if (data.length === 0) {
+                    location.assign("./404.html");
+                    return;
+                }
+
+                const searchValue = document.getElementById("search-value");
+                searchValue.textContent = keyword;
+
+                const searchResults = document.getElementById("search-results");
+                APP.displayMovies(searchResults, data);
             }
-
-            // if (!navigator.onLine) {
-            //     console.log("Offline mode");
-            //     location.assign(
-            //         `./cache-results.html?keyword=${keyword}&sort=${sort}`
-            //     );
-            // }
-
-            const searchResults = document.getElementById("search-results");
-            APP.displayMovies(searchResults, data);
         } catch (err) {
             console.error(err);
         }
@@ -283,30 +286,36 @@ const APP = {
 
         console.log("keyword:", keyword);
         console.log("sort:", sort);
+        console.log(movies);
 
-        const cacheValue = document.getElementById("cache-value");
-        cacheValue.textContent = keyword;
+        const filteredMovies = movies.filter(({ data }) => {
+            return data.title.toLowerCase().includes(keyword.toLowerCase());
+        });
 
-        const filteredMovies = movies.filter(({ title }) => {
-            return title.toLowerCase().includes(keyword.toLowerCase());
+        const filteredMoviesArray = filteredMovies.map((filteredMovie) => {
+            return filteredMovie.data;
         });
 
         switch (sort) {
             case "release-date":
-                filteredMovies.sort((a, b) => b.popularity - a.popularity);
+                filteredMoviesArray.sort((a, b) => b.popularity - a.popularity);
                 break;
 
             case "popularity":
-                filteredMovies.sort((a, b) => b.release_date - a.release_date);
+                filteredMoviesArray.sort(
+                    (a, b) => b.release_date - a.release_date
+                );
                 break;
 
             case "vote":
-                filteredMovies.sort((a, b) => b.vote_average - a.vote_average);
+                filteredMoviesArray.sort(
+                    (a, b) => b.vote_average - a.vote_average
+                );
                 break;
         }
 
         const cacheResults = document.getElementById("cache-results");
-        APP.displayMovies(cacheResults, filteredMovies);
+        APP.displayMovies(cacheResults, filteredMoviesArray);
     },
 };
 
