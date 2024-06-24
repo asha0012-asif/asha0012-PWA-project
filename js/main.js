@@ -1,4 +1,3 @@
-// 1 - modify manifest.json to include company icon (make icon)
 // 2 - add hamburger nav menu to move between pages (home & favourites)
 // 3 - get home page working
 // 4 - add css to everything
