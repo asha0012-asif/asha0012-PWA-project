@@ -4,22 +4,27 @@ const movieCacheName = `movies-pwa-project-${version}`; // cache for specific mo
 
 const preCacheResources = [
     "./",
+    "./manifest.json",
     "./index.html",
-    "./404.html",
-    "./details.html",
+    "./search.html",
+    "./search-results.html",
     "./cache-results.html",
+    "./details.html",
     "./favourites.html",
-    "./css/main.css",
+    "./404.html",
     "./css/css-reset.css",
+    "./css/main.css",
+    "./css/search.css",
+    "./css/details.css",
     "./js/main.js",
+    "./sw.js",
+    "./img/icons/ion_caret-back-outline.svg",
     "./img/icons/ion_close.svg",
     "./img/icons/ion_heart.svg",
     "./img/icons/ion_menu.svg",
     "./img/icons/ion_person.svg",
     "./img/icons/ion_search.svg",
 ];
-
-// self.isOnline = "onLine" in navigator?.onLine;
 
 self.addEventListener("install", (ev) => {
     console.log("SW install event");
