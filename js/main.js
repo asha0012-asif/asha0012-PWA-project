@@ -1,6 +1,7 @@
 // 2 - add hamburger nav menu to move between pages (home & favourites)
-// 3 - get home page working
-// 4 - add css to everything
+// 3 - get offline mode working on vercel (works on localhost)
+// 4 - get home page working
+// 5 - add css to everything
 
 const APP = {
     BASE_URL: "https://asha0012-midterm-project-api.onrender.com/api/movies",
@@ -9,6 +10,8 @@ const APP = {
     movieCacheName: null,
     favouritesCacheName: null,
 
+    menuIcon: null,
+
     init: () => {
         APP.version = 1;
         APP.movieCacheName = `movies-pwa-project-${APP.version}`;
@@ -16,8 +19,10 @@ const APP = {
 
         APP.registerSW();
 
+        // as long as the route is not on the search page, do header functions
         const route = location.pathname;
         console.log("Route", route);
+
         if (route === "/index.html" || route === "/") {
             console.log("Home page");
         } else if (route === "/search.html") {
@@ -83,6 +88,41 @@ const APP = {
             location.assign("./404.html");
             return;
         }
+
+        if (route !== "/search.html") {
+            APP.menuIcon = document.querySelector("#menu-icon");
+            APP.menuIcon.addEventListener("click", APP.handleNavClick);
+        }
+    },
+
+    handleNavClick: (ev) => {
+        ev.stopPropagation();
+
+        const navMenu = document.querySelector(".header__nav");
+        navMenu.classList.toggle("open");
+
+        if (navMenu.getAttribute("class").includes("open")) {
+            // console.log("OPENED");
+
+            APP.menuIcon.setAttribute("id", "closed-icon");
+            APP.menuIcon.innerHTML = `
+            <img
+                class="ion-close"
+                src="./img/icons/ion_close.svg"
+                alt="close icon"
+            />`;
+            return;
+        }
+
+        // console.log("CLOSED");
+
+        APP.menuIcon.setAttribute("id", "menu-icon");
+        APP.menuIcon.innerHTML = `
+            <img
+                class="ion-menu"
+                src="./img/icons/ion_menu.svg"
+                alt="menu icon"
+            />`;
     },
 
     registerSW: () => {
@@ -161,15 +201,20 @@ const APP = {
             movieCard.classList.add("card");
             movieCard.setAttribute("data-id", id);
 
+            // movieCard.innerHTML = `
+            //     <img src="${imageUrl}" alt="${title} poster" />
+            //     <p>${title}</p>
+            //     <div class="icon">
+            //         <img
+            //             src="../img/icons/ion_heart.svg"
+            //             alt="Favorite icon"
+            //         />
+            //     </div>
+            // `;
+
             movieCard.innerHTML = `
                 <img src="${imageUrl}" alt="${title} poster" />
                 <p>${title}</p>
-                <div class="icon">
-                    <img
-                        src="../img/icons/ion_heart.svg"
-                        alt="Favorite icon"
-                    />
-                </div>
             `;
 
             df.append(movieCard);

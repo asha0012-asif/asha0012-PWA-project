@@ -80,6 +80,10 @@ select {
     padding: 0.5rem 1rem;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* --- BUTTONS --- */
 .btn {
     /* common styles */
@@ -105,15 +109,54 @@ ul {
 }
 
 /* --- HEADER --- */
-.header .container {
+.header__main {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.icons-group {
+.menu-icon-container {
+    cursor: pointer;
+}
+
+.header__logo {
+    color: #fff;
+    font-family: "Abril Fatface";
+    font-size: 1.5rem;
+}
+
+/* for search and user icons */
+.header__icons-group {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.25rem;
+}
+
+/* header navigation bar */
+.header__nav {
+    display: none;
+}
+
+.open.header__nav {
+    display: block;
+    width: 100vw;
+    height: 150vh;
+    padding: 1.5rem 0;
+    margin: 1.5rem 0;
+
+    position: absolute;
+
+    background-color: #000;
+}
+
+.header__list-item li {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    padding: 0.5rem 0;
+}
+
+.header__list-item li:where(:hover, :focus-visible) {
+    text-decoration: underline;
 }
 
 /* --- RESULTS --- */
