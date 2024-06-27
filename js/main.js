@@ -1,4 +1,3 @@
-// 2 - add hamburger nav menu to move between pages (home & favourites)
 // 3 - get offline mode working on vercel (works on localhost)
 // 4 - get home page working
 // 5 - add css to everything

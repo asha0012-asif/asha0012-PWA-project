@@ -103,6 +103,18 @@ a {
     font-size: inherit;
 }
 
+.btn--secondary {
+    background-color: #0000;
+    border: 0.125rem solid var(--color-primary-300);
+    color: var(--color-white);
+}
+
+.btn--tertiary {
+    background-color: #0000;
+    border: 0.125rem solid #0000;
+    color: var(--color-white);
+}
+
 /* --- LISTS --- */
 ul {
     list-style-type: none;
