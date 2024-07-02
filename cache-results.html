@@ -3,92 +3,96 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cache results</title>
+        <meta
+            name="description"
+            content="A movie web application which allows users to search, favourite, and use offline."
+        />
+        <title>Cache Results | FilmQuest Movie App</title>
 
+        <!-- Favicon -->
+        <link rel="icon" href="./img/icons/FilmQuest_logo_16x16.png" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- Google Fonts - Abril Fatface -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Google Fonts - Hind Madurai -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="manifest" href="./manifest.json" />
+
+        <!-- CSS -->
         <link rel="stylesheet" href="./css/css-reset.css" />
         <link rel="stylesheet" href="./css/main.css" />
-        <!-- <link rel="stylesheet" href="./css/cache-results.css" /> -->
+        <!-- <link rel="stylesheet" href="./css/cache-results.css" /> 
+        -->
     </head>
     <body>
         <header class="header">
             <div class="container">
-                <div class="icon" id="menu-icon">
-                    <img class="ion-menu" src="./img/icons/ion_menu.svg" />
+                <div class="header__main">
+                    <div class="menu-icon-container">
+                        <span class="icon" id="menu-icon">
+                            <img
+                                class="ion-menu"
+                                src="./img/icons/ion_menu.svg"
+                                alt="menu icon"
+                            />
+                        </span>
+                    </div>
+                    <a href="./index.html" class="header__logo"> FILMQUEST </a>
+
+                    <div class="header__icons-group">
+                        <a href="./search.html">
+                            <div class="icon" id="search-icon">
+                                <img
+                                    class="ion-search"
+                                    src="./img/icons/ion_search.svg"
+                                    alt="search icon"
+                                />
+                            </div>
+                        </a>
+
+                        <a href="">
+                            <div class="icon" id="person-icon">
+                                <img
+                                    class="ion-person"
+                                    src="./img/icons/ion_person.svg"
+                                    alt="user icon"
+                                />
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
-                <a href="./index.html" class="header__logo"> FILMQUEST </a>
-
-                <div class="icons-group">
-                    <a href="./search.html">
-                        <div class="icon" id="search-icon">
-                            <img
-                                class="ion-search"
-                                src="./img/icons/ion_search.svg"
-                            />
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="icon" id="person-icon">
-                            <img
-                                class="ion-person"
-                                src="./img/icons/ion_person.svg"
-                            />
-                        </div>
-                    </a>
-                </div>
+                <nav class="header__nav">
+                    <ul class="header__list">
+                        <a href="./index.html" class="header__list-item">
+                            <li>Home</li>
+                        </a>
+                        <a href="./favourites.html" class="header__list-item">
+                            <li>Favourites</li>
+                        </a>
+                    </ul>
+                </nav>
             </div>
         </header>
 
         <main>
             <div class="container">
-                <h2>Saved Results for "<span id="cache-value"></span>"</h2>
-                <ul id="cache-results" class="results">
-                    <li class="card">
-                        <img
-                            src="https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg"
-                            alt="Movie poster"
-                        />
-                        <h3>Godzilla vs. Kong</h3>
-                        <button class="btn">
-                            <div class="icon">
-                                <img
-                                    src="./img/icons/ion_heart.svg"
-                                    alt="favourite-icon"
-                                />
-                            </div>
-                        </button>
-                    </li>
-                    <li class="card">
-                        <img
-                            src="https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg"
-                            alt="Movie poster"
-                        />
-                        <h3>Godzilla vs. Kong</h3>
-                        <button class="btn">
-                            <div class="icon">
-                                <img
-                                    src="./img/icons/ion_heart.svg"
-                                    alt="favourite-icon"
-                                />
-                            </div>
-                        </button>
-                    </li>
-                    <li class="card">
-                        <img
-                            src="https://image.tmdb.org/t/p/w500/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg"
-                            alt="Movie poster"
-                        />
-                        <h3>Godzilla vs. Kong</h3>
-                        <button class="btn">
-                            <div class="icon">
-                                <img
-                                    src="./img/icons/ion_heart.svg"
-                                    alt="favourite-icon"
-                                />
-                            </div>
-                        </button>
-                    </li>
-                </ul>
+                <h2 id="cache-h2">
+                    Saved Results for "<span id="cache-value"></span>"
+                </h2>
+                <ul id="cache-results" class="results"></ul>
             </div>
         </main>
 
@@ -97,5 +101,7 @@
                 <p>&copy; 2024 FILMQUEST INC.</p>
             </div>
         </footer>
+
+        <script src="./js/main.js"></script>
     </body>
 </html>

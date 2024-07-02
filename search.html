@@ -3,8 +3,35 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="A movie web application which allows users to search, favourite, and use offline."
+        />
+
         <title>Search | FilmQuest Movie App</title>
 
+        <!-- Favicon -->
+        <link rel="icon" href="./img/icons/FilmQuest_logo_16x16.png" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- Google Fonts - Abril Fatface -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Google Fonts - Hind Madurai -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="manifest" href="./manifest.json" />
+
+        <!-- CSS -->
         <link rel="stylesheet" href="./css/css-reset.css" />
         <link rel="stylesheet" href="./css/main.css" />
         <link rel="stylesheet" href="./css/search.css" />
@@ -18,6 +45,7 @@
                         <img
                             class="ion-close"
                             src="./img/icons/ion_close.svg"
+                            alt="Close icon"
                         />
                     </div>
                 </a>
@@ -31,22 +59,19 @@
 
                     <form action="" method="get" class="search-form">
                         <input
-                            type="text"
-                            class="search-form__input"
+                            type="search"
+                            id="search-form__input"
                             placeholder="Search for a movie"
                         />
                         <button class="btn search-form__btn">Search</button>
-                    </form>
 
-                    <div class="filters">
-                        <button class="btn filter-btn" id="release-date">
-                            Release Date
-                        </button>
-                        <button class="btn filter-btn" id="popularity">
-                            Popularity
-                        </button>
-                        <button class="btn filter-btn" id="vote">Vote</button>
-                    </div>
+                        <select name="filters" id="filters">
+                            <option value="">--- Filter by ---</option>
+                            <option value="release-date">Release Date</option>
+                            <option value="popularity">Popularity</option>
+                            <option value="vote">Vote</option>
+                        </select>
+                    </form>
                 </div>
             </section>
 

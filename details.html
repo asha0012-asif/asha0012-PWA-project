@@ -3,8 +3,34 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Details</title>
+        <meta
+            name="description"
+            content="A movie web application which allows users to search, favourite, and use offline."
+        />
+        <title>Details | FilmQuest Movie App</title>
 
+        <!-- Favicon -->
+        <link rel="icon" href="./img/icons/FilmQuest_logo_16x16.png" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- Google Fonts - Abril Fatface -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Google Fonts - Hind Madurai -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="manifest" href="./manifest.json" />
+
+        <!-- CSS -->
         <link rel="stylesheet" href="./css/css-reset.css" />
         <link rel="stylesheet" href="./css/main.css" />
         <link rel="stylesheet" href="./css/details.css" />
@@ -13,30 +39,51 @@
     <body>
         <header class="header">
             <div class="container">
-                <div class="icon" id="menu-icon">
-                    <img class="ion-menu" src="./img/icons/ion_menu.svg" />
+                <div class="header__main">
+                    <div class="menu-icon-container">
+                        <span class="icon" id="menu-icon">
+                            <img
+                                class="ion-menu"
+                                src="./img/icons/ion_menu.svg"
+                                alt="menu icon"
+                            />
+                        </span>
+                    </div>
+                    <a href="./index.html" class="header__logo"> FILMQUEST </a>
+
+                    <div class="header__icons-group">
+                        <a href="./search.html">
+                            <div class="icon" id="search-icon">
+                                <img
+                                    class="ion-search"
+                                    src="./img/icons/ion_search.svg"
+                                    alt="search icon"
+                                />
+                            </div>
+                        </a>
+
+                        <a href="">
+                            <div class="icon" id="person-icon">
+                                <img
+                                    class="ion-person"
+                                    src="./img/icons/ion_person.svg"
+                                    alt="user icon"
+                                />
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
-                <a href="./index.html" class="header__logo"> FILMQUEST </a>
-
-                <div class="icons-group">
-                    <a href="./search.html">
-                        <div class="icon" id="search-icon">
-                            <img
-                                class="ion-search"
-                                src="./img/icons/ion_search.svg"
-                            />
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="icon" id="person-icon">
-                            <img
-                                class="ion-person"
-                                src="./img/icons/ion_person.svg"
-                            />
-                        </div>
-                    </a>
-                </div>
+                <nav class="header__nav">
+                    <ul class="header__list">
+                        <a href="./index.html" class="header__list-item">
+                            <li>Home</li>
+                        </a>
+                        <a href="./favourites.html" class="header__list-item">
+                            <li>Favourites</li>
+                        </a>
+                    </ul>
+                </nav>
             </div>
         </header>
 
@@ -44,59 +91,25 @@
             <div class="container">
                 <div class="icons-group__details">
                     <a href="">
-                        <div class="icon" id="person-icon">
+                        <div class="icon" id="back-details-icon">
                             <img
-                                class="ion-person"
+                                class="ion-back-details"
                                 src="./img/icons/ion_caret-back-outline.svg"
+                                alt="back icon"
                             />
                         </div>
                     </a>
-                    <a href="">
-                        <div class="icon" id="person-icon">
-                            <img
-                                class="ion-person"
-                                src="./img/icons/ion_heart.svg"
-                                alt="`${title}`"
-                            />
-                        </div>
-                    </a>
-                </div>
 
-                <div class="basic-details">
-                    <div class="basic-details__poster">
+                    <div class="icon" id="favourite-icon">
                         <img
-                            src="https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_.jpg"
+                            class="ion-heart"
+                            src="./img/icons/ion_heart.svg"
+                            alt="favourite"
                         />
                     </div>
-
-                    <div>
-                        <h1 class="basic-details__title">
-                            Spider-man: Across the Spider-Verse
-                        </h1>
-                        <div class="basic-details__info">
-                            <p class="basic-details__year">2023</p>
-                            <p class="basic-details__rating">PG</p>
-                            <p class="basic-details__rating">2h 20m</p>
-                        </div>
-                    </div>
-
-                    <div class="basic-details__overview">
-                        <h2>Overview</h2>
-                        <p class="basic-details__description">
-                            Miles Morales catapults across the multiverse, where
-                            he encounters a team of Spider-People charged with
-                            protecting its very existence. When the heroes clash
-                            on how to handle a new threat, Miles must redefine
-                            what it means to be a hero.
-                        </p>
-
-                        <div class="basic-details__genres">
-                            <p class="basic-details__genre">Animation</p>
-                            <p class="basic-details__genre">Action</p>
-                            <p class="basic-details__genre">Adventure</p>
-                        </div>
-                    </div>
                 </div>
+
+                <div class="basic-details"></div>
             </div>
         </main>
 
@@ -105,5 +118,7 @@
                 <p>&copy; 2024 FILMQUEST INC.</p>
             </div>
         </footer>
+
+        <script src="./js/main.js"></script>
     </body>
 </html>

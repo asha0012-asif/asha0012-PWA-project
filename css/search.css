@@ -16,7 +16,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
 
-    .search-form__input {
+    #search-form__input {
         /* grid-column: span 4; */
         grid-column: span 3;
     }
@@ -28,7 +28,7 @@
     }
 
     @media only screen and (min-width: 45rem) {
-        .search-form__input {
+        #search-form__input {
             grid-column: span 3;
         }
 
@@ -39,11 +39,15 @@
     }
 }
 
-.filters {
-    margin-top: 1.5rem;
+#filters {
+    grid-column: span 4;
 
     display: flex;
     gap: 0.5rem;
+
+    background-color: var(--color-primary-300);
+    border-color: var(--color-primary-300);
+    color: #fff;
 }
 
 .filter-btn {
